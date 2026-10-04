@@ -1,0 +1,25 @@
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/typescript-node:5-24-trixie
+    command: sleep infinity
+    cap_drop:
+      - ALL
+    volumes:
+      - ../..:/workspaces:cached
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: sqltor2
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-data:
