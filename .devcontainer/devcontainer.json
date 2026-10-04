@@ -1,0 +1,50 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "sqltor2-core",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:5-24-trixie",
+
+  "runArgs": ["--cap-drop=ALL"],
+
+  // Remove "no-new-privileges" if users need to gain elevated privileges inside the container (e.g., su, sudo).
+  "securityOpt": ["no-new-privileges"],
+  "init": true,
+
+  "features": {
+    "ghcr.io/devcontainers-extra/features/nestjs-cli:2": {}
+  },
+
+  "mounts": [
+    // Persist the pnpm-managed runtimes, globally installed bins, and the store they are
+    // linked from, so rebuilds don't re-download them. A project's own store is not here:
+    // pnpm keeps that on the workspace's filesystem, in node_modules/.pnpm-store.
+    {
+      "source": "${devcontainerId}-pnpm-home",
+      "target": "/home/node/.local/share/pnpm",
+      "type": "volume"
+    },
+    // Persist pnpm's metadata cache across rebuilds.
+    {
+      "source": "${devcontainerId}-pnpm-cache",
+      "target": "/home/node/.cache/pnpm",
+      "type": "volume"
+    },
+    // Persist the shell history the image keeps in this directory.
+    {
+      "source": "${devcontainerId}-bash-history",
+      "target": "/home/node/.local/state/bash",
+      "type": "volume"
+    }
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // Run package.json scripts and dependency installs with pnpm rather than letting
+        // VS Code guess a package manager from the lockfiles present.
+        "npm.packageManager": "pnpm"
+      },
+      "extensions": ["esbenp.prettier-vscode"]
+    }
+  }
+}
