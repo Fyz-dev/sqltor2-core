@@ -4,7 +4,7 @@
   "name": "sqltor2-core",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
+  "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
   // Remove "no-new-privileges" if users need to gain elevated privileges inside the container (e.g., su, sudo).

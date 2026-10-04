@@ -1,5 +1,5 @@
 services:
-  app:
+  devcontainer:
     image: mcr.microsoft.com/devcontainers/typescript-node:5-24-trixie
     command: sleep infinity
     cap_drop:
