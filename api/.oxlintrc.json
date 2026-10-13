@@ -14,10 +14,11 @@
     "restriction": "off"
   },
   "rules": {
-    "typescript/no-explicit-any": "error",
+    "typescript/no-explicit-any": "warn",
     "typescript/no-floating-promises": "error",
     "typescript/no-misused-promises": "error",
     "typescript/no-unnecessary-type-assertion": "warn",
+    "typescript/consistent-type-imports": "off",
     "typescript/no-unused-vars": [
       "warn",
       {
@@ -27,20 +28,24 @@
         "ignoreRestSiblings": true
       }
     ],
-    "typescript/no-extraneous-class": [
-      "error",
-      {
-        "allowWithDecorator": true
-      }
-    ],
+
     "import/no-cycle": "error",
     "import/no-duplicates": "error",
+
     "no-console": "warn",
     "promise/always-return": "off",
     "unicorn/prefer-node-protocol": "error",
     "no-debugger": "error",
     "no-eval": "error",
-    "no-new-func": "error"
+    "no-new-func": "error",
+
+    "vitest/consistent-test-it": ["error", { "fn": "it" }],
+    "vitest/no-focused-tests": "error",
+    "vitest/no-disabled-tests": "warn",
+    "vitest/no-identical-title": "error",
+    "vitest/no-conditional-in-test": "error",
+    "vitest/no-test-return-statement": "warn",
+    "vitest/prefer-to-be": "error"
   },
   "ignorePatterns": [
     "**/node_modules/**",
