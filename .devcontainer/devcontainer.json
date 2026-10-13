@@ -44,7 +44,10 @@
         // VS Code guess a package manager from the lockfiles present.
         "npm.packageManager": "pnpm"
       },
-      "extensions": ["esbenp.prettier-vscode"]
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "oxc.oxc-vscode"
+      ]
     }
   }
 }
