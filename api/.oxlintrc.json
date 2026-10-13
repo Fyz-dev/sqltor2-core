@@ -1,10 +1,52 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "rules": {
-    "typescript/no-explicit-any": "off",
-    "typescript/no-floating-promises": "error"
-  },
+  "plugins": ["import", "typescript", "unicorn", "node", "promise", "vitest"],
   "env": {
     "node": true
-  }
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "perf": "warn",
+    "style": "off",
+    "nursery": "off",
+    "pedantic": "off",
+    "restriction": "off"
+  },
+  "rules": {
+    "typescript/no-explicit-any": "error",
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    "typescript/no-unnecessary-type-assertion": "warn",
+    "typescript/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "typescript/no-extraneous-class": [
+      "error",
+      {
+        "allowWithDecorator": true
+      }
+    ],
+    "import/no-cycle": "error",
+    "import/no-duplicates": "error",
+    "no-console": "warn",
+    "promise/always-return": "off",
+    "unicorn/prefer-node-protocol": "error",
+    "no-debugger": "error",
+    "no-eval": "error",
+    "no-new-func": "error"
+  },
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/coverage/**",
+    "prisma/generated/**",
+    "docs/**"
+  ]
 }
