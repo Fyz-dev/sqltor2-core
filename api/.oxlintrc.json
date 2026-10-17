@@ -28,6 +28,12 @@
         "ignoreRestSiblings": true
       }
     ],
+    "typescript/no-extraneous-class": [
+      "error",
+      {
+        "allowWithDecorator": true
+      }
+    ],
 
     "import/no-cycle": "error",
     "import/no-duplicates": "error",
