@@ -35,8 +35,16 @@
       "source": "${devcontainerId}-bash-history",
       "target": "/home/node/.local/state/bash",
       "type": "volume"
+    },
+    {
+      "source": "${localEnv:SSH_AUTH_SOCK}",
+      "target": "/tmp/ssh-agent.lock",
+      "type": "bind"
     }
   ],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/tmp/ssh-agent.lock"
+  },
   "customizations": {
     "vscode": {
       "settings": {
@@ -44,10 +52,7 @@
         // VS Code guess a package manager from the lockfiles present.
         "npm.packageManager": "pnpm"
       },
-      "extensions": [
-        "esbenp.prettier-vscode",
-        "oxc.oxc-vscode"
-      ]
+      "extensions": ["esbenp.prettier-vscode", "oxc.oxc-vscode"]
     }
   }
 }
